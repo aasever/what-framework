@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>What Framework?</title>
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <div id="app">
+    <header class="header">
+      <div class="header-left">
+        <img id="site-favicon" class="favicon" src="" alt="">
+        <span id="site-host" class="site-host">Analyzing...</span>
+      </div>
+      <button id="refresh-btn" class="icon-btn" title="Re-scan page">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M3 12a9 9 0 0 1 9-9 9.75 9.75 0 0 1 6.74 2.74L21 8"/>
+          <path d="M21 3v5h-5"/>
+          <path d="M21 12a9 9 0 0 1-9 9 9.75 9.75 0 0 1-6.74-2.74L3 16"/>
+          <path d="M3 21v-5h5"/>
+        </svg>
+      </button>
+    </header>
+
+    <div id="loading" class="state-view">
+      <div class="spinner"></div>
+      <span>Detecting frameworks…</span>
+    </div>
+
+    <div id="error" class="state-view hidden">
+      <svg class="state-icon error-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+        <circle cx="12" cy="12" r="10"/>
+        <line x1="12" y1="8" x2="12" y2="12"/>
+        <circle cx="12" cy="16" r="0.5" fill="currentColor"/>
+      </svg>
+      <span id="error-msg">Unable to analyze this page</span>
+    </div>
+
+    <div id="results" class="hidden">
+
+      <section id="frameworks-section" class="section">
+        <div class="section-header">
+          <svg viewBox="0 0 16 16" fill="currentColor">
+            <path d="M14 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h12zm-1 2H3v10h10V3z"/>
+            <path d="M5 6h6v1H5zm0 3h4v1H5z"/>
+          </svg>
+          Frameworks
+        </div>
+        <div id="frameworks-list"></div>
+      </section>
+
+      <section id="tools-section" class="section hidden">
+        <div class="section-header">
+          <svg viewBox="0 0 16 16" fill="currentColor">
+            <path d="M1 0 0 1l2.2 3.081a1 1 0 0 0 .815.419h.07a1 1 0 0 1 .708.293l2.675 2.675-2.617 2.654A3.003 3.003 0 0 0 0 13a3 3 0 1 0 5.878-.851l2.654-2.617.968.968-.305.914a1 1 0 0 0 .242 1.023l3.27 3.27a.997.997 0 0 0 1.414 0l1.586-1.586a.997.997 0 0 0 0-1.414l-3.27-3.27a1 1 0 0 0-1.023-.242L10.5 9.5l-.96-.96 2.68-2.643A3.005 3.005 0 0 0 16 3c0-.269-.035-.53-.102-.777l-2.14 2.141L12 4l-.364-1.757L13.777.102a3 3 0 0 0-3.675 3.68L7.462 6.46 4.793 3.793a1 1 0 0 1-.293-.707v-.071a1 1 0 0 0-.419-.814L1 0z"/>
+          </svg>
+          Tools & Integrations
+        </div>
+        <div id="tools-list"></div>
+      </section>
+
+      <div id="empty-state" class="state-view hidden">
+        <svg class="state-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+          <circle cx="11" cy="11" r="8"/>
+          <path d="m21 21-4.35-4.35"/>
+          <path d="M8 11h6M11 8v6" stroke-opacity="0.4"/>
+        </svg>
+        <span>No frameworks detected on this page</span>
+        <span class="state-sub">This may be a plain HTML page or a restricted browser page</span>
+      </div>
+
+    </div>
+  </div>
+  <script src="popup.js"></script>
+</body>
+</html>
